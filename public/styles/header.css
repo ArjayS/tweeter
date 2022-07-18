@@ -1,0 +1,12 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #9da34a;
+  background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  border-radius: 8px;
+}
