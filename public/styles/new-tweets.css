@@ -29,3 +29,7 @@
 .counter {
   font-family: "Bungee", cursive;
 }
+
+.counterLimit {
+  color: red;
+}
