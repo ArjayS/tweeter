@@ -35,3 +35,55 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+article {
+  width: 100%;
+  padding: 24px;
+  border: 5px solid black;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+article:hover {
+  box-shadow: 8px 8px rgba(38, 77, 184, 0.3);
+}
+
+.fas:hover {
+  color: rgb(244, 198, 128);
+}
+
+article header {
+  display: flex;
+  justify-content: space-between;
+}
+
+article .handle {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+article .user {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+article .profile-tweet {
+  margin: 1em;
+}
+
+article footer {
+  display: flex;
+  border-top: 5px solid black;
+  justify-content: space-between;
+  align-items: center;
+}
+
+article footer p {
+  margin-left: 12px;
+}
+
+article footer .buttons {
+  margin-right: 12px;
+  color: rgb(33, 33, 252);
+}
