@@ -14,7 +14,7 @@
   border-color: #545149;
 }
 
-#tweet-container {
+#tweetDisplay {
   display: flex;
   justify-content: space-between;
 }
