@@ -3,12 +3,13 @@ nav {
   width: 100%;
   background-color: #4056a1;
   color: #ffffff;
+  border-radius: 8px;
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 8px;
-  z-index: -1;
-  position: relative;
 }
 
 #tweeter-logo {
