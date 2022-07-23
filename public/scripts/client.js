@@ -32,37 +32,58 @@ const data = [
 ];
 
 $(document).ready(function () {
-  const renderTweets = function (users) {
-    for (let userTweet of users) {
-      $("#tweets-container").append(createTweetElement(userTweet));
-    }
-  };
+  $("form").on("submit", function (event) {
+    event.preventDefault();
 
-  const createTweetElement = function (userKey) {
-    let $tweet = $(`
-      <article>
-        <header>
-          <span class="user"><img class="user" src="${userKey.user.avatars}" alt="Face Logo Image">
-          <p>${userKey.user.name}</p></span>
-          <p class="handle">${userKey.user.handle}</p>
-       </header>
-          <p>${userKey.content.text}</p>
-  
-        <footer>
-          <span>5 days ago</span>
-          <span class ="buttons">
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
-          </span>
-        </footer>
-      </article>`);
+    // Creating a tweet data variable
+    const tweetData = $(this).serialize();
 
-    return $tweet;
-  };
+    // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function.
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: tweetData,
+      success: (data) => {
+        console.log("This request succeeded and here's the data: ", data);
 
-  renderTweets(data);
+        const renderTweets = function (users) {
+          for (let userTweet of users) {
+            $("#tweets-container").append(createTweetElement(userTweet));
+          }
+        };
+
+        const createTweetElement = function (userKey) {
+          let $tweet = $(`
+            <article>
+              <header>
+                <span class="user"><img class="user" src="${userKey.user.avatars}" alt="Face Logo Image">
+                <p>${userKey.user.name}</p></span>
+                <p class="handle">${userKey.user.handle}</p>
+             </header>
+                <p>${userKey.content.text}</p>
+        
+              <footer>
+                <span>5 days ago</span>
+                <span class ="buttons">
+                  <i class="fas fa-flag"></i>
+                  <i class="fas fa-retweet"></i>
+                  <i class="fas fa-heart"></i>
+                </span>
+              </footer>
+            </article>`);
+
+          return $tweet;
+        };
+
+        renderTweets(data);
+      },
+      error: (error) => {
+        console.log("This request failed and the was the error: ", error);
+      },
+    });
+  });
 });
+
 // // I WENT ABOVE AND BEYOND WHEN STATING WEEK 9 - BUT THIS IS MOST OF THE PROJECT BELOW. WILL FOLLOW THE DYNAMIC HTML SECTION OF WEEK 9.
 
 // const loadTweet = function () {
