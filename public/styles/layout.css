@@ -59,7 +59,21 @@ article header {
   justify-content: space-between;
 }
 
-article .handle {
+article .name-handle {
+  font-weight: 500;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+article .at-handle {
+  color: rgb(0, 77, 52);
+  font-weight: 600;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+article .text-handle {
+  font-weight: 600;
   margin-left: 24px;
   margin-right: 24px;
 }
