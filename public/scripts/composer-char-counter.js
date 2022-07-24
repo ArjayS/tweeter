@@ -1,5 +1,6 @@
+//Document ready shorthand form
 $(() => {
-  $("#tweet-text").on("input", function() {
+  $("#tweet-text").on("input", function () {
     const tweetLimit = 140;
     const sentenceLength = $(this).val().length;
 
