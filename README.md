@@ -28,7 +28,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 ### A GIF demonstration for Tweeter App
 
-![GIF demonstration for Tweeter App](https://github.com/ArjayS/tinyapp/blob/master/docs/TinyApp_1_GIF.gif)
+![GIF demonstration for Tweeter App](https://github.com/ArjayS/tweeter/blob/master/public/images/ezgif.com-gif-maker.gif)
 
 ## Dependencies
 
