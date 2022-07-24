@@ -1,3 +1,7 @@
+form {
+  font-weight: 600;
+}
+
 .new-tweet {
   display: flex;
   flex-direction: column;
@@ -12,6 +16,7 @@
   border-bottom: solid;
   border-bottom-width: 3px;
   border-color: #545149;
+  font-weight: 600;
 }
 
 #tweetDisplay {
