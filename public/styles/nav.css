@@ -1,9 +1,10 @@
 nav {
   height: 120px;
   width: 100%;
-  background-color: #4056a1;
+  background-color: #00a305;
+  background-image: url("https://www.transparenttextures.com/patterns/strange-bullseyes.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   color: #ffffff;
-  border-radius: 8px;
   position: fixed;
   top: 0;
   width: 100%;
