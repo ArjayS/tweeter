@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #00a305;
+  background-color: #be7703;
   background-image: url("https://www.transparenttextures.com/patterns/strange-bullseyes.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   margin-top: 120px;
@@ -17,5 +17,54 @@ h2 strong {
 
 h2 {
   font-weight: 300;
-  color: aliceblue;
+  color: #f4f1ec;
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  #main-header {
+    background-color: #c77d05;
+    background-image: url("https://www.transparenttextures.com/patterns/strange-bullseyes.png");
+    margin: 64px;
+    margin-top: 170px;
+    width: 100%;
+    max-width: 512px;
+    padding: 48px 48px;
+    border-radius: 16px;
+  }
+
+  .container {
+    margin: 64px;
+    margin-top: 170px;
+    max-width: 800px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  #main-header {
+    background-color: #9b6104;
+    background-image: url("https://www.transparenttextures.com/patterns/strange-bullseyes.png");
+    margin: 64px;
+    margin-top: 170px;
+    width: 100%;
+    max-width: 512px;
+    padding: 48px 48px;
+    border-radius: 16px;
+  }
+
+  .container {
+    margin: 64px;
+    margin-top: 170px;
+    max-width: 800px;
+  }
 }
