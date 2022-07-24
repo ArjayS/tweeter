@@ -97,6 +97,12 @@ $(() => {
         .catch((error) => {
           console.log("This request failed and the was the error: ", error);
         });
+
+      //clear form
+      $(".new-tweet").find("form").trigger("reset");
+
+      //reser counter
+      $(".counter").text(140);
     }
   });
 });
