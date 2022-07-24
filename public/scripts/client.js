@@ -71,13 +71,23 @@ $(document).ready(function () {
     const textLengthCheck = $(this).children("#tweet-text").val().length;
 
     if (textLengthCheck > 140) {
-      alert("Character length has exceeded");
+      // alert("Character length has exceeded");
+      $(".textLimitError")
+        .text("⛔ Character length has exceeded ⛔")
+        .slideDown();
     } else if (!textLengthCheck) {
-      alert("There are no characters placed");
+      // alert("There are no characters placed");
+      $(".noTextError")
+        .text("⛔ There are no characters placed ⛔")
+        .slideDown();
+
       //Learned this => 'textLengthCheck.preventDefault()' in youtube when researching for keypress/down/up events
       textLengthCheck.preventDefault();
     } else {
       // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function.
+      $(".textLimitError").slideUp();
+      $(".noTextError").slideUp();
+
       $.ajax({
         type: "POST",
         url: "/tweets",
