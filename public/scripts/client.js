@@ -5,14 +5,14 @@
  */
 
 //Escaping a script
-const escape = function(str) {
+const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
 //Creating a tweet element
-const createTweetElement = function(userKey) {
+const createTweetElement = function (userKey) {
   const timeSince = timeago.format(userKey.created_at);
   const safeHTML = escape(userKey.content.text);
   let $tweet = $(`
@@ -36,7 +36,7 @@ const createTweetElement = function(userKey) {
 };
 
 //Rendering tweets
-const renderTweets = function(users) {
+const renderTweets = function (users) {
   //Loop through each tweet
   users.map((userTweet) => {
     $("#tweets-container").prepend(createTweetElement(userTweet));
@@ -44,7 +44,7 @@ const renderTweets = function(users) {
 };
 
 //Load each tweets with ajax get request
-const loadTweet = function() {
+const loadTweet = function () {
   $.ajax({
     type: "GET",
     url: "/tweets",
@@ -62,7 +62,7 @@ const loadTweet = function() {
 
 //Document ready shorthand form
 $(() => {
-  $("form").on("submit", function(event) {
+  $("form").on("submit", function (event) {
     //Prevent the default on form submission
     event.preventDefault();
 
@@ -86,7 +86,6 @@ $(() => {
       $(".noTextError").slideUp();
 
       //Create the data in the ajax post request
-
       $.post("/tweets", tweetData)
         .then((tweetData) => {
           console.log(
