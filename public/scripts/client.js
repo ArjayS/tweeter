@@ -4,13 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const escape = function (str) {
+//Escaping a script
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-const createTweetElement = function (userKey) {
+//Creating a tweet element
+const createTweetElement = function(userKey) {
   const timeSince = timeago.format(userKey.created_at);
   const safeHTML = escape(userKey.content.text);
   let $tweet = $(`
@@ -33,73 +35,69 @@ const createTweetElement = function (userKey) {
   return $tweet;
 };
 
-const renderTweets = function (users) {
-  // // Another way to loop through the object using map and applying each of the data to prepend
-  // users.map((userTweet) => {
-  //   $("#tweets-container").prepend(createTweetElement(userTweet));
-  // });
-
-  for (let userTweet of users) {
+//Rendering tweets
+const renderTweets = function(users) {
+  //Loop through each tweet
+  users.map((userTweet) => {
     $("#tweets-container").prepend(createTweetElement(userTweet));
-  }
+  });
 };
 
-const loadTweet = function () {
-  // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function
+//Load each tweets with ajax get request
+const loadTweet = function() {
   $.ajax({
     type: "GET",
     url: "/tweets",
     dataType: "json",
-    success: (data) => {
+  })
+    .then((data) => {
       console.log("This request succeeded and here's the data: ", data);
       $("#tweets-container").empty();
       renderTweets(data);
-    },
-    error: (error) => {
+    })
+    .catch((error) => {
       console.log("This request failed and the was the error: ", error);
-    },
-  });
+    });
 };
 
-$(document).ready(function () {
-  $("form").on("submit", function (event) {
+//Document ready shorthand form
+$(() => {
+  $("form").on("submit", function(event) {
+    //Prevent the default on form submission
     event.preventDefault();
 
     // Creating a tweet data variable
     const tweetData = $(this).serialize();
 
+    //Variable for traversing the DOM to check the text length
     const textLengthCheck = $(this).children("#tweet-text").val().length;
 
+    //Conditional check if text is more than 140 characters or empty characters are in the input
     if (textLengthCheck > 140) {
-      // alert("Character length has exceeded");
       $(".textLimitError")
         .text("⛔ Character length has exceeded ⛔")
         .slideDown();
     } else if (!textLengthCheck) {
-      // alert("There are no characters placed");
       $(".noTextError")
         .text("⛔ There are no characters placed ⛔")
         .slideDown();
-
-      //Learned this => 'textLengthCheck.preventDefault()' in youtube when researching for keypress/down/up events
-      textLengthCheck.preventDefault();
     } else {
-      // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function.
       $(".textLimitError").slideUp();
       $(".noTextError").slideUp();
 
-      $.ajax({
-        type: "POST",
-        url: "/tweets",
-        data: tweetData,
-        success: (data) => {
-          console.log("This request succeeded and here's the data: ", data);
+      //Create the data in the ajax post request
+
+      $.post("/tweets", tweetData)
+        .then((tweetData) => {
+          console.log(
+            "This request succeeded and here's the data: ",
+            tweetData
+          );
           loadTweet();
-        },
-        error: (error) => {
+        })
+        .catch((error) => {
           console.log("This request failed and the was the error: ", error);
-        },
-      });
+        });
     }
   });
 });
