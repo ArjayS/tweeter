@@ -10,7 +10,7 @@ $(() => {
     const remainingCharacters = tweetLimit - sentenceLength;
     counter.val(remainingCharacters);
 
-    //Character limit check
+    //Conditional character limit check
     if (remainingCharacters < 0) {
       $(".counter").addClass("counterLimit");
     } else {
