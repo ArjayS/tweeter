@@ -64,7 +64,7 @@
       </div>
       <br />
       <div>
-        <h2><strong>Your</strong> Name</h2>
+        <h2><strong>Robert</strong> Servado</h2>
       </div>
     </header>
 
@@ -72,13 +72,9 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-
         <form class="tweet-form" action="/tweets" method="POST">
-          <textarea
-            name="text"
-            id="tweet-text"
-            placeholder="What are you humming about?"
-          ></textarea>
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text"></textarea>
 
           <div id="tweetDisplay">
             <button id="btn" type="submit">Tweet</button>
