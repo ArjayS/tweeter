@@ -10,10 +10,10 @@ const createTweetElement = function (userKey) {
     <article>
       <header>
         <span class="user"><img class="user" src="${userKey.user.avatars}" alt="Face Logo Image"/>
-        <p class="handle">${userKey.user.name}</p></span>
-        <p class="handle">${userKey.user.handle}</p>
+        <p class="name-handle">${userKey.user.name}</p></span>
+        <p class="at-handle">${userKey.user.handle}</p>
      </header>
-        <p class="handle">${userKey.content.text}</p>
+        <p class="text-handle">${userKey.content.text}</p>
       <footer>
         <span>${timeSince}</span>
         <span class ="buttons">
@@ -56,19 +56,29 @@ $(document).ready(function () {
     // Creating a tweet data variable
     const tweetData = $(this).serialize();
 
-    // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function.
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: tweetData,
-      success: (data) => {
-        console.log("This request succeeded and here's the data: ", data);
-        loadTweet();
-      },
-      error: (error) => {
-        console.log("This request failed and the was the error: ", error);
-      },
-    });
+    const textLengthCheck = $(this).children("#tweet-text").val().length;
+
+    if (textLengthCheck > 140) {
+      alert("Character length has exceeded");
+    } else if (!textLengthCheck) {
+      alert("There are no characters placed");
+      //Learned this => 'textLengthCheck.preventDefault()' in youtube when researching for keypress/down/up events
+      textLengthCheck.preventDefault();
+    } else {
+      // Can be written in the short hand in the future refactor by using the shorthand method and using then and catch. Also separate it in an another function.
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: tweetData,
+        success: (data) => {
+          console.log("This request succeeded and here's the data: ", data);
+          loadTweet();
+        },
+        error: (error) => {
+          console.log("This request failed and the was the error: ", error);
+        },
+      });
+    }
   });
 });
 
