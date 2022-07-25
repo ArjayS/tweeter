@@ -18,11 +18,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 !["Writing a tweet"](https://github.com/ArjayS/tweeter/blob/master/public/images/write_tweet.PNG)
 
-### Error Empty Inout
+### Error Empty Input
 
 !["Error Empty Input"](https://github.com/ArjayS/tweeter/blob/master/public/images/error_empty_input.PNG)
 
-### Error LEngth Exceeded
+### Error Length Exceeded
 
 !["Error Length Exceeded"](https://github.com/ArjayS/tweeter/blob/master/public/images/error_length_exceeded.PNG)
 
